@@ -1,0 +1,19 @@
+{
+  "name": "start-webpack",
+  "version": "1.0.0",
+  "description": "start a webpack project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SheriSzeto/start-webpack.git"
+  },
+  "author": "sheri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SheriSzeto/start-webpack/issues"
+  },
+  "homepage": "https://github.com/SheriSzeto/start-webpack#readme"
+}
