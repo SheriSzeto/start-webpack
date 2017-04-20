@@ -16,6 +16,32 @@ module.exports = {
         path:BUILD_PATH,
         filename:'bundle.js'
     },
+    module:{
+        loaders:[
+            /*{
+                test: /\.css$/,
+                loaders: ['style-loader','css-loader'],
+                include: APP_PATH
+            },*/
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?limit=40000'
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader','css-loader','sass-loader'],
+                include: APP_PATH
+            },
+            {
+                test: /\.jsx?$/,
+                loader: 'babel',
+                include: APP_PATH,
+                query: {
+                    presets :['es2015']
+                }
+            }
+        ]
+    },
     //添加我们的插件会自动生成一个html文件
     plugins:[
         new HtmlwebpackPlugin({
