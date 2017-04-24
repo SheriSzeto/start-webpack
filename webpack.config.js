@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack');
 // 定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH,'app');
@@ -17,7 +18,7 @@ module.exports = {
         filename:'bundle.js'
     },
     module:{
-        loaders:[
+        rules:[
             /*{
                 test: /\.css$/,
                 loaders: ['style-loader','css-loader'],
@@ -29,17 +30,23 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ['style-loader','css-loader','sass-loader'],
+                use: ['style-loader','css-loader','sass-loader'],
                 include: APP_PATH
             },
             {
                 test: /\.jsx?$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 include: APP_PATH,
                 query: {
                     presets :['es2015']
                 }
-            }
+            },
+            /*{
+                test: /\.js$/,
+                enforce: 'pre',
+                include: APP_PATH,
+                loader: 'eslint-loader'
+            }*/
         ]
     },
     //添加我们的插件会自动生成一个html文件
@@ -50,6 +57,15 @@ module.exports = {
     ],
     devServer:{
         historyApiFallback:true,
-        inline:true//webpack2 不支持hot,progress，不用加
-    }
+        inline:true,//webpack2 不支持hot,progress，不用加
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:5000',
+                secure: false
+            }
+        }
+    },
+    devtool: 'eval-source-map', //利于显示出错位置
+
+
 }
