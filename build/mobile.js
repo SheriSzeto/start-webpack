@@ -1,0 +1,1 @@
+webpackJsonp([1],{121:function(e,n,t){"use strict";t(3);var d=t(1),u=function(e){return e&&e.__esModule?e:{default:e}}(d);t(2),(0,u.default)(document).ready(function(){var e=document.createElement("div");e.innerHTML="<h1>Hello World</h1>",document.body.appendChild(e),(0,u.default)("h1").greenify()})}},[121]);
